@@ -1,0 +1,57 @@
+<!-- QUALYS MAP-2 DTD -->
+<!ELEMENT MAP_REQUEST (MAP*|ERROR*) >
+<!-- value is the report ref -->
+<!ELEMENT MAP (HEADER?,(IP+|ERROR)?)>
+<!ATTLIST MAP
+ value CDATA #IMPLIED>
+<!ELEMENT ERROR (#PCDATA)*>
+<!ATTLIST ERROR number CDATA #IMPLIED>
+<!-- INFORMATION ABOUT THE MAP -->
+<!ELEMENT HEADER (KEY+, ASSET_GROUPS?, USER_ENTERED_DOMAINS?,
+OPTION_PROFILE?)>
+<!ELEMENT KEY (#PCDATA)*>
+<!ATTLIST KEY
+ value CDATA #IMPLIED>
+<!ELEMENT ASSET_GROUP (ASSET_GROUP_TITLE)>
+<!ELEMENT ASSET_GROUPS (ASSET_GROUP+)>
+<!ELEMENT ASSET_GROUP_TITLE (#PCDATA)>
+<!ELEMENT USER_ENTERED_DOMAINS (DOMAIN+, NETBLOCK*)>
+<!ELEMENT DOMAIN (#PCDATA)>
+<!ELEMENT NETBLOCK (RANGE+)>
+<!ELEMENT RANGE (START+, END+)>
+<!ELEMENT START (#PCDATA)>
+<!ELEMENT END (#PCDATA)>
+<!ELEMENT OPTION_PROFILE (OPTION_PROFILE_TITLE)>
+<!ELEMENT OPTION_PROFILE_TITLE (#PCDATA)>
+<!ATTLIST OPTION_PROFILE_TITLE
+ option_profile_default CDATA #IMPLIED
+>
+<!-- value is the IP -->
+<!-- type is the kind of server : router, mail server ... -->
+<!-- "port" is deprecated, replaced by "discovery" -->
+<!ELEMENT IP ((PORT*,DISCOVERY*,LINK*)|LINK+)?>
+<!ATTLIST IP
+ value CDATA #REQUIRED
+ name CDATA #IMPLIED
+ type CDATA #IMPLIED
+ os CDATA #IMPLIED
+ netbios CDATA #IMPLIED
+ account CDATA #IMPLIED
+ network CDATA #IMPLIED
+ network_id CDATA #IMPLIED>
+<!-- value indicates an open port on a server (deprecated) -->
+<!ELEMENT PORT (#PCDATA)*>
+<!ATTLIST PORT
+ value CDATA #REQUIRED>
+<!-- value indicates a method that discovered this machine -->
+<!ELEMENT DISCOVERY (#PCDATA)*>
+<!ATTLIST DISCOVERY
+ method CDATA #REQUIRED>
+<!-- value of a link, indicates the need to go trough a server to see -->
+<!-- another (ie. gateway or router) -->
+<!ELEMENT LINK EMPTY>
+<!ATTLIST LINK
+ value CDATA #REQUIRED>
+<!ATTLIST LINK type (check|cash) "cash">
+
+<!-- EOF -->

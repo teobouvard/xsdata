@@ -191,6 +191,10 @@ class DataType(Enum):
     def from_qname(cls, qname: str) -> Optional["DataType"]:
         return __DataTypeQNameIndex__.get(qname)
 
+    @classmethod
+    def from_code(cls, code: str):
+        return __DataTypeCodeIndex__.get(code, DataType.STRING)
+
 
 def period_datatype(value: XmlPeriod) -> DataType:
     if value.year is not None:
@@ -238,6 +242,8 @@ __DataTypeInferIndex__: Dict[Type, Callable] = {
     XmlPeriod: period_datatype,
 }
 __DataTypeQNameIndex__ = {str(dt): dt for dt in DataType}
+__DataTypeCodeIndex__ = { dt.code.lower() for dt in DataType }
+
 
 
 class EventType:

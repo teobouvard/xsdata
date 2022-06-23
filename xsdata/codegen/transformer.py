@@ -139,8 +139,8 @@ class SchemaTransformer:
             input_stream = self.load_resource(uri)
             if input_stream:
                 dtd = etree.DTD(io.BytesIO(input_stream))
-                logger.info("Parsing dtd %s", os.path.basename(uri))
-                classes.extend(DtdMapper.map(dtd))
+                logger.info("Parsing dtd %s", uri)
+                classes.extend(DtdMapper.map(dtd, uri))
 
         self.classes.extend(classes)
 

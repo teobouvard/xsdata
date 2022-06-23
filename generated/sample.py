@@ -231,22 +231,18 @@ class Range:
     class Meta:
         name = "RANGE"
 
-    start: List[Start] = field(
-        default_factory=list,
+    start: Optional[Start] = field(
+        default=None,
         metadata={
             "name": "START",
             "type": "Element",
-            "min_occurs": 1,
-            "sequential": True,
         }
     )
-    end: List[End] = field(
-        default_factory=list,
+    end: Optional[End] = field(
+        default=None,
         metadata={
             "name": "END",
             "type": "Element",
-            "min_occurs": 1,
-            "sequential": True,
         }
     )
 
@@ -256,12 +252,11 @@ class AssetGroups:
     class Meta:
         name = "ASSET_GROUPS"
 
-    asset_group: List[AssetGroup] = field(
-        default_factory=list,
+    asset_group: Optional[AssetGroup] = field(
+        default=None,
         metadata={
             "name": "ASSET_GROUP",
             "type": "Element",
-            "min_occurs": 1,
         }
     )
 
@@ -351,12 +346,11 @@ class Netblock:
     class Meta:
         name = "NETBLOCK"
 
-    range: List[Range] = field(
-        default_factory=list,
+    range: Optional[Range] = field(
+        default=None,
         metadata={
             "name": "RANGE",
             "type": "Element",
-            "min_occurs": 1,
         }
     )
 
@@ -366,13 +360,11 @@ class UserEnteredDomains:
     class Meta:
         name = "USER_ENTERED_DOMAINS"
 
-    domain: List[Domain] = field(
-        default_factory=list,
+    domain: Optional[Domain] = field(
+        default=None,
         metadata={
             "name": "DOMAIN",
             "type": "Element",
-            "min_occurs": 1,
-            "sequential": True,
         }
     )
     netblock: List[Netblock] = field(
@@ -380,7 +372,6 @@ class UserEnteredDomains:
         metadata={
             "name": "NETBLOCK",
             "type": "Element",
-            "sequential": True,
         }
     )
 
@@ -390,12 +381,11 @@ class Header:
     class Meta:
         name = "HEADER"
 
-    key: List[Key] = field(
-        default_factory=list,
+    key: Optional[Key] = field(
+        default=None,
         metadata={
             "name": "KEY",
             "type": "Element",
-            "min_occurs": 1,
         }
     )
     asset_groups: Optional[AssetGroups] = field(
@@ -439,12 +429,11 @@ class Map:
             "type": "Element",
         }
     )
-    ip: List[Ip] = field(
-        default_factory=list,
+    ip: Optional[Ip] = field(
+        default=None,
         metadata={
             "name": "IP",
             "type": "Element",
-            "min_occurs": 1,
         }
     )
     error: Optional[Error] = field(

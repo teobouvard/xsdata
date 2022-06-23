@@ -1,4 +1,4 @@
-from generated.mod import (
+from generated.sample import (
     AssetGroup,
     AssetGroups,
     AssetGroupTitle,
